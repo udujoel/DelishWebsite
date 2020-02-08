@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelishWebsite", "DelishWebsite.csproj", "{2709B7EB-4FCD-48D4-92E8-749395B04411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelishWebsite.Tests", "..\DelishWebsite.Tests\DelishWebsite.Tests.csproj", "{3F4540CA-C2FC-4FB6-A105-0553CBF62337}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2709B7EB-4FCD-48D4-92E8-749395B04411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2709B7EB-4FCD-48D4-92E8-749395B04411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2709B7EB-4FCD-48D4-92E8-749395B04411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2709B7EB-4FCD-48D4-92E8-749395B04411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27A455AA-B477-41BA-8401-2E2BD88F2797}
+	EndGlobalSection
+EndGlobal
