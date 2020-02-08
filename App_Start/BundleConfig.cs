@@ -11,7 +11,17 @@ namespace DelishWebsite
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*,~/Scripts/js/jquery-ui.js, ,~/Scripts/js/app.js,~/Scripts/js/easing.js,~/Scripts/js/jquery.flexisel.js,~/Scripts/js/lightbox-plus-jquery.min.js,~/Scripts/js/modernizr.custom.js,~/Scripts/js/move-top.js,~/Scripts/js/numcsroller-1.0.js,~/Scripts/js/particles.js,~/Scripts/js/responsiveslides.min.js"));
+                        "~/Scripts/jquery.validate*",
+                        "~/Scripts/js/jquery-ui.js",
+                        "~/Scripts/js/app.js",
+                        "~/Scripts/js/easing.js",
+                        "~/Scripts/js/jquery.flexisel.js",
+                        "~/Scripts/js/lightbox-plus-jquery.min.js",
+                        "~/Scripts/js/modernizr.custom.js",
+                        "~/Scripts/js/move-top.js",
+                        "~/Scripts/js/numcsroller-1.0.js",
+                        "~/Scripts/js/particles.js",
+                        "~/Scripts/js/responsiveslides.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
