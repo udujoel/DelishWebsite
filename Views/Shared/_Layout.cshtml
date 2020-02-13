@@ -72,17 +72,13 @@
 							<nav class="menu menu--miranda">
 								<ul class="nav navbar-nav menu__list">
 									<li class="menu__item menu__item--current"><a href="index.html" class="menu__link">Home</a></li>
-									<li class="menu__item"><a href="about.html" class=" menu__link">About</a></li>
-									<li class="menu__item"><a href="services.html" class=" menu__link">Services</a></li>
-									<li class="menu__item"><a href="gallery.html" class=" menu__link">Gallery</a></li>
-									<li class="dropdown menu__item">
-										<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="codes.html">Short Codes</a></li>
-											<li><a href="icons.html">Icons</a></li>
-										</ul>
-									</li>
-									<li class="menu__item"><a href="contact.html" class=" menu__link">Contact</a></li>
+									<li class="menu__item"><a href="services.html" class=" menu__link">Dishes</a></li>
+									<li class="menu__item"><a href="gallery.html" class=" menu__link">Outreaches</a></li>
+									<li class="menu__item"><a href="about.html" class=" menu__link">About US</a></li>
+
+									<li class="menu__item">@Html.Partial("_LoginPartial")</li>
+
+
 								</ul>
 							</nav>
 						</div>
@@ -156,8 +152,8 @@
 	</script>
 	<!-- //Dropdown-Menu-JavaScript -->
 	<!-- Calendar -->
-	<link rel="stylesheet" href= @Url.Content("Content/css/jquery-ui.css") />
-	<script src= @Url.Content("Scripts/js/jquery-ui.js")></script>
+	<link rel="stylesheet" href=@Url.Content("Content/css/jquery-ui.css") />
+	<script src=@Url.Content("Scripts/js/jquery-ui.js")></script>
 	<script>
 		$( function ()
 		{
@@ -166,8 +162,8 @@
 	</script>
 	<!-- //Calendar -->
 	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src= @Url.Content("Scripts/js/move-top.js")></script>
-	<script type="text/javascript" src= @Url.Content("Scripts/js/easing.js")></script>
+	<script type="text/javascript" src=@Url.Content("Scripts/js/move-top.js")></script>
+	<script type="text/javascript" src=@Url.Content("Scripts/js/easing.js")></script>
 	<script type="text/javascript">
 		jQuery( document ).ready( function ( $ )
 		{
@@ -198,7 +194,7 @@
 	</script>
 	<!-- //here ends scrolling icon -->
 	<!--js for bootstrap working-->
-	<script src= @Url.Content("Scripts/js/bootstrap.js")></script>
+	<script src=@Url.Content("Scripts/js/bootstrap.js")></script>
 	<!-- //for bootstrap working -->
 	<!-- script-for-menu -->
 	<script>
@@ -209,6 +205,10 @@
 			} );
 		} );
 	</script>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
 	<!-- script-for-menu -->
 
 </body>
