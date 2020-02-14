@@ -1,43 +1,62 @@
 ﻿@model DelishWebsite.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
-}          
-<br/>
-<br/>
-<br/>
-<br/>
-
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
 }
 
+<!-- banner -->
+<div class="main-banner-2">
 
+</div>
+<!-- //banner -->
+<!-- page details -->
+<div class="breadcrumb-agile bg-light py-2">
+    <ol class="breadcrumb bg-light m-0">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Register Page</li>
+    </ol>
+</div>
+<!-- //page details -->
+<!-- login -->
+<div class="login-contect py-5">
+    <div class="container py-xl-5 py-3">
+        <div class="login-body">
+            <div class="login p-4 mx-auto">
+                <h5 class="text-center mb-4">Register Now</h5>
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary("", new {@class = "text-danger"})
+
+
+            <div class="form-group">
+                <label>Your Name</label>
+                @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label class="mb-2">Password</label>
+                @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
+
+            </div>
+                    <button type="submit" value="Register" class="btn submit mb-4">Register</button>
+                    <p class="text-center">
+                        <a href="#" class="text-da">By clicking Register, I agree to your terms</a>
+                    </p>
+                }
+                </div>
+        </div>
+    </div>
+</div>
