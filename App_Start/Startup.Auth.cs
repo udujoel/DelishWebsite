@@ -1,11 +1,14 @@
 ﻿using System;
+
+using DelishWebsite.Models;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+
 using Owin;
-using DelishWebsite.Models;
 
 namespace DelishWebsite
 {
@@ -34,7 +37,7 @@ namespace DelishWebsite
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -46,23 +49,23 @@ namespace DelishWebsite
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                                                  clientId: "c946bc7f-c0db-450e-8809-f0c78f1da953",
+                                                  clientSecret: "zSwwj.?3]yR@GUgoBt7jhLekXxs6Y1O6");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+                                         consumerKey: "fGutNFFUDZvrdBJwgVSoJhKBv",
+                                         consumerSecret: "EK7BYJOqzB1av6f7x0Z9AmC7RZ3SB8kdc9nFHi6CWOamMoNteh");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+                                          appId: "637262320362265",
+                                          appSecret: "afbe4de1188d72bdf57268a7ddfe1a09");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "774952119296-nvfnahj2u4tr35ghv6lh2cr6bpuu11b4.apps.googleusercontent.com",
+                ClientSecret = "4wF93iUgNBX4QgQlDFz6UWpC"
+            });
         }
     }
 }
