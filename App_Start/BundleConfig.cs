@@ -30,7 +30,7 @@ namespace DelishWebsite
                       "~/Content/css/font-awesome.min.css"
                      ));
 
-            BundleTable.EnableOptimizations = true;
+
         }
     }
 }
