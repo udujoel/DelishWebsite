@@ -29,6 +29,8 @@ namespace DelishWebsite
                       "~/Content/css/css_slider.css",
                       "~/Content/css/font-awesome.min.css"
                      ));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
