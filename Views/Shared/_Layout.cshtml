@@ -1,5 +1,6 @@
-﻿
-<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Delish Food </title>
@@ -10,11 +11,10 @@
 
 	<!-- Web-Fonts -->
 	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext"
-	      rel="stylesheet"/>
+		  rel="stylesheet" />
 	<link href="//fonts.googleapis.com/css?family=Barlow+Semi+Condensed:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	      rel="stylesheet"/>
-	<!-- //Web-Fonts -->	
-
+		  rel="stylesheet" />
+	<!-- //Web-Fonts -->
 	<!-- //for-mobile-apps -->
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
@@ -23,7 +23,7 @@
 <body>
 	<!-- banner -->
 
-	<header id="home"> 
+	<header id="home">
 		<!-- top-bar -->
 		<div class="top-bar py-2 border-bottom">
 			<div class="container">
@@ -82,49 +82,55 @@
 				</div>
 			</div>
 		</div>
-	
-	<!-- //top-bar -->
-	<!-- header 2 -->
-	<!-- navigation -->
-	<div class="main-top py-1">
-		<div class="container">
-			<div class="nav-content">
-				<!-- logo -->
-				<h1>
-					<a id="logo" class="logo" href=@Url.Action("Index", "Home")>
-						<img src=@Url.Content("~/Content/images/logo.png") alt="" class="img-fluid" /><span>Delish</span>
-						Comfort
-					</a>
-				</h1>
-				<!-- //logo -->
-				<!-- nav -->
-				<div class="nav_web-dealingsls">
-					<nav>
-						<label for="drop" class="toggle">Menu</label>
-						<input type="checkbox" id="drop" />
-						<ul class="menu">
-							<li><a href=@Url.Action("Index", "Home")>Home</a></li>
-							<li>
-								<a href=@Url.Action("Menu", "Home") class="">Menu</a>
-							</li>
-							<li><a href=@Url.Action("About", "Home")>About Us</a></li>
-							<li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
 
-						</ul>
-					</nav>
+		<!-- //top-bar -->
+		<!-- header 2 -->
+		<!-- navigation -->
+		<div class="main-top py-1">
+			<div class="container">
+				<div class="nav-content">
+					<!-- logo -->
+					<h1>
+						<a id="logo" class="logo" href=@Url.Action("Index", "Home")>
+							<img src=@Url.Content("~/Content/images/logo.png") alt="" class="img-fluid" /><span>Delish</span>
+							Comfort
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_web-dealingsls">
+						<nav>
+							<label for="drop" class="toggle">Menu</label>
+							<input type="checkbox" id="drop" />
+							<ul class="menu">
+								<li><a href=@Url.Action("Index", "Home")>Home</a></li>
+								<li>
+									<a href=@Url.Action("Menu", "Home") class="">Menu</a>
+								</li>
+								<li><a href=@Url.Action("About", "Home")>About Us</a></li>
+								<li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
+								@if (Request.IsAuthenticated)
+								{
+									<li >
+										@Html.ActionLink("View Cart", "Cart", "Order", routeValues: null, htmlAttributes: new {title = "Cart", @class = "btn btn-info text-uppercase text-wh"})
+
+									</li >
+								}
+							</ul>
+						</nav>
+					</div>
+					<!-- //nav -->
 				</div>
-				<!-- //nav -->
 			</div>
 		</div>
-	</div>
-	<!-- //navigation -->
-	<!-- //header 2 -->
+		<!-- //navigation -->
+		<!-- //header 2 -->
 	</header>
 	<!-- //header -->
 
 	@RenderBody()
 
-	
+
 
 
 
@@ -217,14 +223,14 @@
 									<input type="text"
 										   class="form-control"
 										   name="Name"
-										   placeholder="Name"
+										   placeholder="Your Name"
 										   required="" />
 								</div>
 								<div class="col-lg-6 form-group mb-2 pl-lg-1">
 									<input type="text"
 										   class="form-control"
 										   name="Phone"
-										   placeholder="Phone"
+										   placeholder="Your Phone #"
 										   required="" />
 								</div>
 							</div>
@@ -238,7 +244,7 @@
 							<div class="form-group mb-2">
 								<textarea name="Comment"
 										  class="form-control"
-										  placeholder="Comment"
+										  placeholder="Request Detail"
 										  required=""></textarea>
 							</div>
 							<button type="submit" class="btn submit-contact ml-auto">
@@ -255,7 +261,7 @@
 	@section Scripts {
 		@Scripts.Render("~/bundles/jqueryval")
 	}
-	
+
 
 </body>
 </html>
