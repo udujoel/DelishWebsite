@@ -20,14 +20,18 @@ namespace DelishWebsite
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Content/js/datatables.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.css",
                       "~/Content/css/style.css",
                       "~/Content/css/single.css",
                       "~/Content/css/css_slider.css",
-                      "~/Content/css/font-awesome.min.css"
+                      "~/Content/css/font-awesome.min.css",
+                      "~/Content/css/cartstyle.css",
+                      "~/Content/css/datatables.css"
                      ));
 
 

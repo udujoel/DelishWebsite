@@ -198,7 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\cartstyle.css" />
     <Content Include="Content\css\css_slider.css" />
+    <Content Include="Content\css\datatables.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\single.css" />
     <Content Include="Content\css\style.css" />
@@ -253,6 +255,7 @@
     <Content Include="Content\images\te1.jpg" />
     <Content Include="Content\images\te2.jpg" />
     <Content Include="Content\images\te3.jpg" />
+    <Content Include="Content\js\datatables.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -393,7 +396,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\js\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
