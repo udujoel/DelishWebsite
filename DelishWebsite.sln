@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelishWebsite", "DelishWebs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelishWebsite.Tests", "..\DelishWebsite.Tests\DelishWebsite.Tests.csproj", "{3F4540CA-C2FC-4FB6-A105-0553CBF62337}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelishDB", "..\DelishDB\DelishDB.csproj", "{AF618D9F-658E-4FD6-A52D-E30EF606EE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4540CA-C2FC-4FB6-A105-0553CBF62337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF618D9F-658E-4FD6-A52D-E30EF606EE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF618D9F-658E-4FD6-A52D-E30EF606EE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF618D9F-658E-4FD6-A52D-E30EF606EE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF618D9F-658E-4FD6-A52D-E30EF606EE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
