@@ -29,7 +29,5 @@ namespace DelishWebsite.Models
         {
             return new ApplicationDbContext();
         }
-
-        //        public System.Data.Entity.DbSet<DelishWebsite.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
