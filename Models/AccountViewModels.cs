@@ -48,9 +48,7 @@ namespace DelishWebsite.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        
 
         [Required]
         [Display(Name = "Email")]
