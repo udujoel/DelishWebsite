@@ -10,7 +10,7 @@
         <li>
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="btn login-button-2 text-uppercase text-wh" })
       
-        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger text-uppercase text-wh">Log off</a></li>
+            <a href="javascript:document.getElementById('logoutForm').submit()"><button class="btn btn-danger text-uppercase text-wh">Log off</button></a></li>
     </ul>
     }
 }
