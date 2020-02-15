@@ -37,7 +37,7 @@
 							</div>
 							<div class="col-xl-3 col-6 header-top_w3layouts">
 								<p class="text-da">
-									<span class="fa fa-phone mr-2"></span>+234 8061261677
+									<span class="fa fa-phone mr-2"></span>+234 806-126-1677
 								</p>
 							</div>
 							<div class="col-xl-6"></div>
@@ -91,7 +91,7 @@
 			<div class="nav-content">
 				<!-- logo -->
 				<h1>
-					<a id="logo" class="logo" href="index.html">
+					<a id="logo" class="logo" href=@Url.Action("Index", "Home")>
 						<img src=@Url.Content("~/Content/images/logo.png") alt="" class="img-fluid" /><span>Delish</span>
 						Comfort
 					</a>
@@ -103,14 +103,13 @@
 						<label for="drop" class="toggle">Menu</label>
 						<input type="checkbox" id="drop" />
 						<ul class="menu">
-							<li><a href="index.html">Home</a></li>
+							<li><a href=@Url.Action("Index", "Home")>Home</a></li>
 							<li>
 								<a href=@Url.Action("Menu", "Home") class="">Menu</a>
 							</li>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
+							<li><a href=@Url.Action("About", "Home")>About Us</a></li>
+							<li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
 
-							</li>
 						</ul>
 					</nav>
 				</div>
