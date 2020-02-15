@@ -228,7 +228,7 @@ nav li {
 }
 
 nav a {
-    color: #3a3939;
+    color: #111111;
     font-weight: 400;
     font-size: 14px;
     display: inline-block;
@@ -237,9 +237,13 @@ nav a {
 }
 
 /* Background color change on Hover */
-nav a:hover {
-    color: #3a3939;
-}
+    nav a:hover {
+        color: #ff3f34;
+        font-weight: 900;
+        transition: all 300ms;
+        font-size: 18px;
+        transform: scale(1.2);
+    }
 
 /* Hide Dropdowns by Default
  * and giving it a position of absolute */
