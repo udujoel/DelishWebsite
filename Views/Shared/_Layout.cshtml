@@ -112,7 +112,7 @@
 								@if (Request.IsAuthenticated)
 								{
 									<li>
-										@Html.ActionLink("View Cart", "Cart", "Order", routeValues: null, htmlAttributes: new { title = "Cart", @class = "btn btn-info text-uppercase text-wh" })
+										@Html.ActionLink("View Cart", "Cart", "Order", routeValues: null, htmlAttributes: new { title = "Cart", @class = "btn btn-primary text-uppercase text-wh" })
 
 									</li>
 								}
@@ -132,8 +132,8 @@
 
 
 
-<br />
-<br />
+	<br />
+	<br />
 
 	<!-- //Footer -->
 	<!-- footer -->
@@ -269,8 +269,13 @@
 			});
 
 		</script>
-	}
+}
 
+<!-- move top icon -->
+<a href="#home" class="move-top text-center">
+	<span class="fa fa-level-up" aria-hidden="true"></span>
+</a>
+<!-- //move top icon -->
 
 </body>
 </html>
