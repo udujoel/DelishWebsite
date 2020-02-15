@@ -453,13 +453,7 @@ a.logo span {
 
 /* //logo */
 
-/* download button */
-.dwn-button span {
-    font-size: 33px;
-    color: #3a3939;
-}
 
-/* //download button */
 
 /* modal */
 .login {
@@ -503,7 +497,7 @@ button.submit {
 /* //header 2 */
 
 /* banner */
-.baneer-w3ls {
+.banner-w3ls {
     background: linear-gradient(to bottom, #fff, #fbfbfb);
     z-index: 1;
     position: relative;
