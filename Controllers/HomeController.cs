@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace DelishWebsite.Controllers
 {
@@ -14,6 +10,13 @@ namespace DelishWebsite.Controllers
         }
 
         public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Menu()
         {
             ViewBag.Message = "Your application description page.";
 
