@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 using DelishDB;
+
+using DelishWebsite.Models;
 
 namespace DelishWebsite.Controllers
 {
@@ -70,6 +73,30 @@ namespace DelishWebsite.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Subscribe(Email email)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            using (var db = new DelishCFdbEF())
+            {
+                try
+                {
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
+            }
 
             return View();
         }
