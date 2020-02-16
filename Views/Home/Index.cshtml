@@ -2,13 +2,16 @@
 	ViewBag.Title = "Home Page";
 }  
 
-@model IEnumerable<string>
+@using DelishWebsite
 			  
 
-@foreach (var item in Model)
+@foreach (var item in ViewBag.Home_Special)
 	{
-		<h1>
-			@item
+		<h1>  
+			@item.home_special_name
+			@item.home_special_description
+			@item.home_special_price
+			
 		</h1>
 	}
 	
@@ -21,24 +24,25 @@
 			<div class="banner-left-w3">
 				<div class="container">
 					<div class="banner-info_agile_w3ls">
-						<h5>Fresh and Tasty</h5>
-						<h3 class="text-da mb-4">Delish-ous <span>Jollof Rice</span></h3>
+					@foreach (var item in ViewBag.Home_Text)
+					{
+						<h5>@item.home_main_small</h5>
+						<h3 class="text-da mb-4">@item.home_main_title <span>@item.home_main_title_red</span></h3>
 						<p>
-							Prepared to your taste and delivered at your convienience! There's no better
-							dream come true than this. Order a weekend special package and recieve a Fridge-ready 
-							packaged dish.
+							@item.home_main_content
 						</p>
-						<a href="#" class="button-w3ls active mt-5">
-							Read More
-							<span class="fa fa-caret-right ml-1"
-								  aria-hidden="true"></span>
-						</a>
-						<a href=@Url.Action("Menu", "Home") class="button-w3ls mt-5 ml-2">
-							Order Now
-							<span class="fa fa-caret-right ml-1"
-								  aria-hidden="true"></span>
-						</a>
-					</div>
+					}
+							<a href=@Url.Action("Menu", "Home") class="button-w3ls active mt-5">
+								See Our Dishes
+								<span class="fa fa-caret-right ml-1"
+									  aria-hidden="true"></span>
+							</a>
+							<a href=@Url.Action("Menu", "Home") class="button-w3ls mt-5 ml-2">
+								Order Now
+								<span class="fa fa-caret-right ml-1"
+									  aria-hidden="true"></span>
+							</a>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -86,22 +90,21 @@
 		<div class="col-lg-5 col-md-6 about"></div>
 		<div class="col-lg-7 col-md-6 about-right-w3 text-right py-md-5">
 			<div class="right-space py-xl-5 py-lg-3">
+			@foreach (var item in ViewBag.Home_About)
+			{
 				<div class="title-section mb-4">
 					<p class="w3ls-title-sub">About Us</p>
-					<h3 class="w3ls-title">Welcome to <span>Delish Comfort</span></h3>
+					<h3 class="w3ls-title">@item.home_about_title <span>@item.home_about_title_red</span></h3>
 				</div>
 				<p class="about-text">
-					Delish Comfort is a social enterprise that cooks and delivers delicious 
-					dishes in bowls and packs to offices, homes and events.
-					We utilize 50% of the profit generated from the business to support the 
-					sustainable development goal of quality education for children...
-
+					@item.home_about_short
 				</p>
-				<a href="about.html" class="button-w3ls mt-5">
-					Read More
-					<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-				</a>
-			</div>
+			}
+					<a href=@Url.Action("About", "Home") class="button-w3ls mt-5">
+						Read More
+						<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+					</a>
+				</div>
 		</div>
 	</div>
 </div>
@@ -114,84 +117,42 @@
 			<h3 class="w3ls-title">Our <span>Special</span></h3>
 		</div>
 		<div class="row">
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6">
-				<div class="card border-0 med-blog">
-					<div class="card-header p-0">
-						<a href="menu.html">
-							<img class="card-img-bottom"
-								 src=@Url.Content("~/Content/images/blog1.jpg")
-								 alt="Card image cap" />
-						</a>
+
+			@foreach (var item in ViewBag.Home_Special)
+			{
+				<!-- blog grid -->
+				<div class="col-lg-4 col-md-6">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<a href=@Url.Action("Menu", "Home", @item.id)>
+								<img class="card-img-bottom"
+									 src=@Url.Content($"~/Content/images/{@item.home_special_img}")
+									 alt="Card image cap" />
+							</a>
+						</div>
+						<div class="card-body border border-top-0">
+							<h5 class="blog-title card-title m-0">
+								<a href=@Url.Action("Menu", "Home", @item.id)>@item.home_special_name</a>
+							</h5>
+							<p class="mt-3">
+								@item.home_special_description
+							</p>
+							<p class="mt-3">
+								@item.home_special_price
+							</p>
+							<a href=@Url.Action("Cart", "Order") class="btn button-w3ls mt-4 mb-3">
+								Add to Cart
+								<span class="fa fa-caret-right ml-1"
+									  aria-hidden="true"></span>
+							</a>
+						</div>
 					</div>
-					<div class="card-body border border-top-0">
-						<h5 class="blog-title card-title m-0">
-							<a href="menu.html">French Burger</a>
-						</h5>
-						<p class="mt-3">
-							Cras ultricies ligula sed magna dictum porta auris blandita.
-						</p>
-						<a href="menu.html" class="btn button-w3ls mt-4 mb-3">
-							View More
-							<span class="fa fa-caret-right ml-1"
-								  aria-hidden="true"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- //blog grid -->
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-				<div class="card border-0 med-blog">
-					<div class="card-header p-0">
-						<a href=@Url.Action("Post", "Blog")>
-							<img class="card-img-bottom"
-								 src=@Url.Content("~/Content/images/blog2.jpg")
-								 alt="Card image cap" />
-						</a>
-					</div>
-					<div class="card-body border border-top-0">
-						<h5 class="blog-title card-title m-0">
-							<a href=@Url.Action("Post", "Blog")>Veg Muffin</a>
-						</h5>
-						<p class="mt-3">
-							Cras ultricies ligula sed magna dictum porta auris blandita.
-						</p>
-						<a href=@Url.Action("Post", "Blog") class="button-w3ls active mt-4 mb-3">
-							View More
-							<span class="fa fa-caret-right ml-1"
-								  aria-hidden="true"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- //blog grid -->
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
-				<div class="card border-0 med-blog">
-					<div class="card-header p-0">
-						<a href=@Url.Action("Post", "Blog")>
-							<img class="card-img-bottom"
-								 src=@Url.Content("~/Content/images/blog3.jpg")
-								 alt="Card image cap" />
-						</a>
-					</div>
-					<div class="card-body border border-top-0">
-						<h5 class="blog-title card-title m-0">
-							<a href=@Url.Action("Post", "Blog")>Hashbrown Brioche</a>
-						</h5>
-						<p class="mt-3">
-							Cras ultricies ligula sed magna dictum porta auris blandita.
-						</p>
-						<a href=@Url.Action("Post", "Blog") class="button-w3ls mt-4 mb-3">
-							View More
-							<span class="fa fa-caret-right ml-1"
-								  aria-hidden="true"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- //blog grid -->
+				</div>	
+
+				<!-- //blog grid -->
+			}
+
+
 		</div>
 	</div>
 </section>

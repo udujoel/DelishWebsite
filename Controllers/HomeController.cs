@@ -11,23 +11,43 @@ namespace DelishWebsite.Controllers
         public ActionResult Index()
         {
 
-            var myTest = new List<string>();
+            var home_text = new List<home_text>();
+            var home_about = new List<home_about>();
+            var home_special = new List<home_special>();
 
             using (var db = new DelishCFdbEF())
             {
 
-                var query = from d in db.dishes
+                var text_query = from d in db.home_text
 
-                            select d.name;
+                                 select d;
+                var about_query = from d in db.home_about
+                                  select d;
+                var special_query = from d in db.home_special
+                                    orderby d.id
+                                    select d;
 
-                foreach (var item in query)
+
+                foreach (var item in text_query)
                 {
-                    myTest.Add(item);
+                    home_text.Add(item);
+                }
+                foreach (var item in about_query)
+                {
+                    home_about.Add(item);
+                }
+                foreach (var item in special_query)
+                {
+                    home_special.Add(item);
                 }
 
             }
 
-            return View(myTest);
+            ViewBag.Home_Text = home_text;
+            ViewBag.Home_About = home_about;
+            ViewBag.Home_Special = home_special;
+
+            return View();
 
 
 
