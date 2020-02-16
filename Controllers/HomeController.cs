@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+
+using DelishDB;
 
 namespace DelishWebsite.Controllers
 {
@@ -6,7 +10,27 @@ namespace DelishWebsite.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            var myTest = new List<string>();
+
+            using (var db = new DelishCFdbEF())
+            {
+
+                var query = from d in db.dishes
+
+                            select d.name;
+
+                foreach (var item in query)
+                {
+                    myTest.Add(item);
+                }
+
+            }
+
+            return View(myTest);
+
+
+
         }
 
         public ActionResult About()
