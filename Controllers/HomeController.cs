@@ -74,7 +74,33 @@ namespace DelishWebsite.Controllers
 
         public ActionResult Menu()
         {
-            ViewBag.Message = "Your application description page.";
+           
+            var menuList = new List<dish>();
+
+            using (var db = new DelishCFdbEF())
+            {
+                try
+                {
+                    var query = from d in db.dishes
+                                orderby d.id
+                                select d;
+
+                    foreach (var dish in query)
+                    {
+                        menuList.Add(dish);
+                        
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+
+            ViewBag.Menu = menuList;
+
+
 
             return View();
         }

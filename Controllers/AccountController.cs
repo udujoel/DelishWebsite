@@ -78,6 +78,7 @@ namespace DelishWebsite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["useremail"] = model.Email;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
