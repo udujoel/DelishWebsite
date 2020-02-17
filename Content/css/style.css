@@ -169,6 +169,14 @@ a.login-button-2 {
     border-radius: 4px;
     color: #fff;
 }
+close-button {
+    letter-spacing: 1px;
+    font-size: 12px;
+    background: red;
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: black;
+}
 
 .middle-flex {
     align-items: center;
@@ -1010,16 +1018,18 @@ h4.p-mask span {
     text-align: center;
 }
 
-.popup .close {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-}
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: 800;
+        text-decoration: none;
+        color: #000;
+        background: red;
+        
+    }
 
 .popup .close:hover {
     color: #7870fb;
