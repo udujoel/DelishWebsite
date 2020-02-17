@@ -5,8 +5,6 @@ using System.Web.Mvc;
 
 using DelishDB;
 
-using DelishWebsite.Models;
-
 namespace DelishWebsite.Controllers
 {
     public class HomeController : Controller
@@ -20,29 +18,40 @@ namespace DelishWebsite.Controllers
 
             using (var db = new DelishCFdbEF())
             {
-
-                var text_query = from d in db.home_text
-
-                                 select d;
-                var about_query = from d in db.home_about
-                                  select d;
-                var special_query = from d in db.home_special
-                                    orderby d.id
-                                    select d;
-
-
-                foreach (var item in text_query)
+                try
                 {
-                    home_text.Add(item);
+                    var text_query = from d in db.home_text
+
+                                     select d;
+                    var about_query = from d in db.home_about
+                                      select d;
+                    var special_query = from d in db.home_special
+                                        orderby d.id
+                                        select d;
+
+
+                    foreach (var item in text_query)
+                    {
+                        home_text.Add(item);
+                    }
+
+                    foreach (var item in about_query)
+                    {
+                        home_about.Add(item);
+                    }
+
+                    foreach (var item in special_query)
+                    {
+                        home_special.Add(item);
+                    }
                 }
-                foreach (var item in about_query)
+                catch (Exception e)
                 {
-                    home_about.Add(item);
+                    Console.WriteLine(e);
+                    throw;
                 }
-                foreach (var item in special_query)
-                {
-                    home_special.Add(item);
-                }
+
+
 
             }
 
@@ -77,28 +86,70 @@ namespace DelishWebsite.Controllers
             return View();
         }
 
-        public ActionResult Subscribe(Email email)
+        [ValidateAntiForgeryToken]
+        public ActionResult Subscribe(subscriber email)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
 
-            using (var db = new DelishCFdbEF())
+            try
             {
-                try
+                using (var db = new DelishCFdbEF())
                 {
+                    var subscriber = new subscriber { subscriber_email = email.subscriber_email };
+                    db.subscribers.Add(subscriber);
+                    db.SaveChanges();
+
 
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
-            return View();
+
+
+
+
+
+            return RedirectToAction("Index");
+        }
+
+        [ValidateAntiForgeryToken]
+        public ActionResult Enquiry(subscriber email)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                using (var db = new DelishCFdbEF())
+                {
+                    var subscriber = new subscriber { subscriber_email = email.subscriber_email };
+                    db.subscribers.Add(subscriber);
+                    db.SaveChanges();
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+
+
+
+
+            return RedirectToAction("Index");
         }
     }
 }
