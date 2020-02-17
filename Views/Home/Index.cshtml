@@ -380,8 +380,9 @@
 				<h3 class="w3ls-title mb-2">Subscribe to Newsletter</h3>
 				<p class="mb-xl-5 mb-4"> and win a Free Delivery on your first order!</p>
 				<form action="/home/subscribe" method="post" class="d-flex newsletter-info">
+					@Html.AntiForgeryToken()
 					<input type="email"
-						   name="email"
+						   name="subscriber_email"
 						   placeholder="Enter your Email..."
 						   required="" />
 					<button type="submit">Submit</button>
