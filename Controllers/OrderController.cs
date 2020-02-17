@@ -9,5 +9,26 @@ namespace DelishWebsite.Controllers
         {
             return View();
         }
+
+        public ActionResult AddToCart(int dishid)
+        {
+
+
+            return RedirectToRoute(new { Controller = "Home", action = "Menu" });
+        }
+
+        public void RemoveFromCart(int dishid)
+        {
+
+
+
+        }
+
+        public ActionResult Checkout(int cartid)
+        {
+
+
+            return View();
+        }
     }
 }
