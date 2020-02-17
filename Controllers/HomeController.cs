@@ -120,7 +120,7 @@ namespace DelishWebsite.Controllers
         }
 
         [ValidateAntiForgeryToken]
-        public ActionResult Enquiry(subscriber email)
+        public ActionResult Enquiry(enquiry _enquiry)
         {
             if (!ModelState.IsValid)
             {
@@ -131,8 +131,8 @@ namespace DelishWebsite.Controllers
             {
                 using (var db = new DelishCFdbEF())
                 {
-                    var subscriber = new subscriber { subscriber_email = email.subscriber_email };
-                    db.subscribers.Add(subscriber);
+                    var newEnquiry = new enquiry() { name = _enquiry.name, phone = _enquiry.phone, email = _enquiry.email, detail = _enquiry.detail };
+                    db.enquiries.Add(newEnquiry);
                     db.SaveChanges();
 
 
