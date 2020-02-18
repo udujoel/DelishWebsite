@@ -46,7 +46,7 @@
                             <h4 class="p-mask">@dish.name <span>@String.Format("{0:C}", @dish.price) </span></h4>
 
                         </a>
-                        <a href=@Url.Action("Cart", "Order") class="button-w3ls ml-1">
+                        <a href=@Url.Action("AddToCart", "Order", new {dishid = @dish.id}) class="button-w3ls ml-1">
                             Add to Cart
                             <span class="fa fa-caret-right ml-1"></span>
                         </a>
