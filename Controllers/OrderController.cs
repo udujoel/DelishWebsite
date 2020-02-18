@@ -5,10 +5,11 @@ using DelishDB;
 
 namespace DelishWebsite.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         // GET
-        [Authorize]
+
         public ActionResult Cart()
         {
             return View();
@@ -23,6 +24,8 @@ namespace DelishWebsite.Controllers
 
             double purchase_price = 0;
             int quantity = 1;
+            bool isInCart = false;
+            var cartItem = new cart();
 
 
 
@@ -34,11 +37,32 @@ namespace DelishWebsite.Controllers
 
                 purchase_price = query1.FirstOrDefault();
 
+                //check if product exist in cart
+
+                var checkCartQuery = from d in db.carts
+                                     where d.product_id == dishid
+                                     select d.quantity;
+
+                isInCart = (checkCartQuery == null) ? false : true;
+
+                if (isInCart)
+                {
+                    quantity = checkCartQuery.First();
+
+                    cartItem.product_id = dishid;
+                    cartItem.quantity = quantity + 1;
+                    cartItem.purchase_price = purchase_price;
+                    cartItem.total = (int)(purchase_price * quantity);
+                }
+                else
+                {
+                    cartItem.product_id = dishid;
+                    cartItem.quantity = 1;
+                    cartItem.purchase_price = purchase_price;
+                    cartItem.total = (int)(purchase_price * quantity);
+                }
 
 
-
-
-                var cartItem = new cart() { product_id = dishid, quantity = quantity, purchase_price = purchase_price, total = (int)(purchase_price * quantity) };
                 db.carts.Add(cartItem);
                 db.SaveChanges();
 
@@ -46,7 +70,15 @@ namespace DelishWebsite.Controllers
 
 
             return RedirectToRoute(new { Controller = "Home", action = "Menu" });
+
+
+
+
+
         }
+
+
+
 
         public ActionResult UpdateCart(int CartId)
         {
