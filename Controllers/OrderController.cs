@@ -8,6 +8,7 @@ namespace DelishWebsite.Controllers
     public class OrderController : Controller
     {
         // GET
+        [Authorize]
         public ActionResult Cart()
         {
             return View();
