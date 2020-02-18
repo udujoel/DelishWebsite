@@ -74,7 +74,7 @@ namespace DelishWebsite.Controllers
 
         public ActionResult Menu()
         {
-           
+
             var menuList = new List<dish>();
 
             using (var db = new DelishCFdbEF())
@@ -88,7 +88,7 @@ namespace DelishWebsite.Controllers
                     foreach (var dish in query)
                     {
                         menuList.Add(dish);
-                        
+
                     }
                 }
                 catch (Exception e)
@@ -107,7 +107,7 @@ namespace DelishWebsite.Controllers
 
         public ActionResult Contact()
         {
-            
+
 
             return View();
         }
@@ -122,6 +122,7 @@ namespace DelishWebsite.Controllers
 
             try
             {
+                //save to DB with EF
                 using (var db = new DelishCFdbEF())
                 {
                     var subscriber = new subscriber { subscriber_email = email.subscriber_email };

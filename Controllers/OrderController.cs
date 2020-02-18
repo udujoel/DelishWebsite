@@ -24,14 +24,22 @@ namespace DelishWebsite.Controllers
             int quantity = 1;
 
 
+
             using (var db = new DelishCFdbEF())
             {
                 var query1 = from d in db.dishes
                              where d.id == dishid
                              select d.price;
-                purchase_price = query1.First();
+
+                purchase_price = query1.FirstOrDefault();
 
 
+
+
+
+                var cartItem = new cart() { product_id = dishid, quantity = quantity, purchase_price = purchase_price, total = (int)(purchase_price * quantity) };
+                db.carts.Add(cartItem);
+                db.SaveChanges();
 
             }
 
