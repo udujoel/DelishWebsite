@@ -45,13 +45,13 @@ namespace DelishWebsite.Controllers
 
                 foreach (var item in cart_query)
                 {
-                    userCart.Add(new cart()
+                    userCart.Add(new cart
                     {
                         id = item.id,
                         product_id = item.product_id,
                         quantity = item.quantity,
                         purchase_price = item.purchase_price,
-                        total = item.total,
+                        total = item.total
                     });
 
                 }
@@ -69,25 +69,23 @@ namespace DelishWebsite.Controllers
 
                 if (isInCart)
                 {
-                    userCart[cartid] = new cart()
-                    {
-                        product_id = dishid,
-                        purchase_price = purchase_price,
-                        quantity = _quantity + 1,
-                        total = (int)(_quantity * purchase_price)
-                    };
+                    db.carts.Find(cartid).quantity++;
 
                 }
                 else
                 {
-                    userCart[cartid] = new cart()
+                    db.carts.Add(new cart
                     {
                         product_id = dishid,
                         purchase_price = purchase_price,
                         quantity = _quantity,
                         total = (int)(_quantity * purchase_price)
-                    };
+                    });
+
+
                 }
+
+
 
                 db.SaveChanges();
 
