@@ -66,51 +66,20 @@
                         </td>
                         <td style="text-align: left; vertical-align: middle;" class="quantity">
                             <div class="product-right">
-                                <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control text-center input-small">
+                                <input min="1" type="number" id="quantity" name="quantity" value=@item.quantity class="form-control text-center input-small">
                             </div>
                         </td>
                         <td style="text-align: left; vertical-align: middle;" class="price">
-                            <h4>$12.99</h4>
+                            <h4>@String.Format("{0:C}", @item.purchase_price)</h4>
                         </td>
                         <td style="text-align: left; vertical-align: middle;">
                             <h4>$25.98</h4>
 
                         </td>
                         <td style="text-align: left; vertical-align: middle;">
-                            <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
+                           <a href=@Url.Action("RemoveFromCart", "Order", new {Cartid = @item.id})></a> <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
 
                         </td>
-
-                    </tr>
-                    <tr class="cake-bottom">
-                        <td style="text-align: left; vertical-align: middle;" class="cakes">
-                            <div class="product-img2">
-                                <img width="100" src=@Url.Content("~/Content/images/2.jpg")>
-
-                            </div>
-                        </td>
-                        <td style="text-align: left; vertical-align: middle;" class="cake-text">
-                            <div class="product-text">
-                                <h3>Jollof Rice</h3>
-                                <p>Product Code: TLG12345</p>
-                            </div>
-                        </td>
-                        <td style="text-align: left; vertical-align: middle;" class="quantity">
-                            <div class="product-right">
-                                <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control text-center input-small">
-                            </div>
-                        </td>
-                        <td style="text-align: left; vertical-align: middle;">
-                            <h4>$12.99</h4>
-                        </td>
-                        <td style="text-align: left; vertical-align: middle;">
-                            <h4>$25.98</h4>
-
-                        </td>
-                        <td style="text-align: left; vertical-align: middle;">
-                            <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
-                        </td>
-
 
                     </tr>
 
