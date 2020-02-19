@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using DelishDB;
 
-using DelishDB;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace DelishWebsite.Controllers
 {
@@ -22,59 +23,79 @@ namespace DelishWebsite.Controllers
             //get qty or set to 1
             //commit to db
 
+            var userCart = new List<cart>();
             double purchase_price = 0;
-            int quantity = 1;
+
+            //check if item already in cart
+
             bool isInCart = false;
-            var cartItem = new cart();
+            int _quantity = 1;
+            int cartid = 0;
 
 
 
             using (var db = new DelishCFdbEF())
             {
-                var query1 = from d in db.dishes
-                             where d.id == dishid
-                             select d.price;
 
-                purchase_price = query1.FirstOrDefault();
+                var cart_query = from d in db.carts
+                                 orderby d.id
+                                 select d;
 
-                //check if product exist in cart
+                purchase_price = db.dishes.Find(dishid).price;
 
-                var checkCartQuery = from d in db.carts
-                                     where d.product_id == dishid
-                                     select d.quantity;
+                foreach (var item in cart_query)
+                {
+                    userCart.Add(new cart()
+                    {
+                        id = item.id,
+                        product_id = item.product_id,
+                        quantity = item.quantity,
+                        purchase_price = item.purchase_price,
+                        total = item.total,
+                    });
 
-                isInCart = (checkCartQuery == null) ? false : true;
+                }
+
+
+                foreach (var item in userCart)
+                {
+                    if (item.product_id == dishid)
+                    {
+                        isInCart = true;
+                        _quantity = item.quantity;
+                        cartid = item.id;
+                    }
+                }
 
                 if (isInCart)
                 {
-                    quantity = checkCartQuery.First();
+                    userCart[cartid] = new cart()
+                    {
+                        product_id = dishid,
+                        purchase_price = purchase_price,
+                        quantity = _quantity + 1,
+                        total = (int)(_quantity * purchase_price)
+                    };
 
-                    cartItem.product_id = dishid;
-                    cartItem.quantity = quantity + 1;
-                    cartItem.purchase_price = purchase_price;
-                    cartItem.total = (int)(purchase_price * quantity);
                 }
                 else
                 {
-                    cartItem.product_id = dishid;
-                    cartItem.quantity = 1;
-                    cartItem.purchase_price = purchase_price;
-                    cartItem.total = (int)(purchase_price * quantity);
+                    userCart[cartid] = new cart()
+                    {
+                        product_id = dishid,
+                        purchase_price = purchase_price,
+                        quantity = _quantity,
+                        total = (int)(_quantity * purchase_price)
+                    };
                 }
 
-
-                db.carts.Add(cartItem);
                 db.SaveChanges();
 
             }
 
 
+
             return RedirectToRoute(new { Controller = "Home", action = "Menu" });
-
-
-
-
-
         }
 
 
