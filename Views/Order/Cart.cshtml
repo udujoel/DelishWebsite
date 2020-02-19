@@ -2,6 +2,18 @@
 @{
     ViewBag.Title = "Cart";
 }
+@model IEnumerable<DelishDB.cart>
+
+
+@foreach (var item in Model)
+{
+    <h1>@item.id</h1>
+    <h1>@item.product_id</h1>
+    <h1>@item.purchase_price</h1>
+    <h1>@item.quantity</h1>
+    <h1>@item.total</h1>
+
+}
 
 <!-- banner -->
 <div class="main-banner-2">
@@ -31,74 +43,78 @@
                 <tr>
                     <th>Images</th>
                     <th>Product Description</th>
-                    <th >Quantity</th>
+                    <th>Quantity</th>
                     <th>Price</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="cake-top">
-                    <td style="text-align: left; vertical-align: middle;" class="cakes">
-                        <div class="product-img">
-                            <img width="100" src=@Url.Content("~/Content/images/1.jpg")>
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;" class="cake-text">
-                        <div class="product-text">
-                            <h3>White Blueberry Cupcakes</h3>
-                            <p>Product Code: TLG12345</p>
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;" class="quantity">
-                        <div class="product-right">
-                            <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;" class="price">
-                        <h4>$12.99</h4>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;">
-                        <h4>$25.98</h4>
+                @foreach (var item in Model)
+                {
+                    <tr class="cake-top">
+                        <td style="text-align: left; vertical-align: middle;" class="cakes">
+                            <div class="product-img">
+                                <img width="100" src=@Url.Content("~/Content/images/1.jpg")>
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;" class="cake-text">
+                            <div class="product-text">
+                                <h3>White Blueberry Cupcakes</h3>
+                                <p>Product Code: TLG12345</p>
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;" class="quantity">
+                            <div class="product-right">
+                                <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control text-center input-small">
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;" class="price">
+                            <h4>$12.99</h4>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;">
+                            <h4>$25.98</h4>
 
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;">
-                        <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;">
+                            <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
 
-                    </td>
+                        </td>
 
-                </tr>
-                <tr class="cake-bottom">
-                    <td style="text-align: left; vertical-align: middle;" class="cakes">
-                        <div class="product-img2">
-                            <img width="100" src=@Url.Content("~/Content/images/2.jpg")>
+                    </tr>
+                    <tr class="cake-bottom">
+                        <td style="text-align: left; vertical-align: middle;" class="cakes">
+                            <div class="product-img2">
+                                <img width="100" src=@Url.Content("~/Content/images/2.jpg")>
 
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;" class="cake-text">
-                        <div class="product-text">
-                            <h3>Jollof Rice</h3>
-                            <p>Product Code: TLG12345</p>
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;" class="quantity">
-                        <div class="product-right">
-                            <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
-                        </div>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;">
-                        <h4>$12.99</h4>
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;">
-                        <h4>$25.98</h4>
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;" class="cake-text">
+                            <div class="product-text">
+                                <h3>Jollof Rice</h3>
+                                <p>Product Code: TLG12345</p>
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;" class="quantity">
+                            <div class="product-right">
+                                <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control text-center input-small">
+                            </div>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;">
+                            <h4>$12.99</h4>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;">
+                            <h4>$25.98</h4>
 
-                    </td>
-                    <td style="text-align: left; vertical-align: middle;">
-                        <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
-                    </td>
+                        </td>
+                        <td style="text-align: left; vertical-align: middle;">
+                            <button class="btn btn-danger btn-sm text-uppercase text-wh">Remove</button>
+                        </td>
 
 
-                </tr>
+                    </tr>
+
+                }
             </tbody>
         </table>
 
@@ -125,7 +141,7 @@
     </div>
 
 </div>
-    <br />
-    <br />
-    <br />
+<br />
+<br />
+<br />
 

@@ -13,10 +13,17 @@ namespace DelishWebsite.Controllers
 
         public ActionResult Cart()
         {
+            //render the cart from db
 
-            //
+            List<cart> cartItems;
+            using (var db = new DelishCFdbEF())
+            {
+                cartItems = db.carts.OrderBy(x => x.id).ToList();
 
-            return View();
+
+            }
+
+            return View(cartItems);
         }
 
         public ActionResult AddToCart(int dishid)
