@@ -15,13 +15,31 @@ namespace DelishWebsite.Controllers
         {
             //render the cart from db
 
+            var dishDetails = new List<dish>();
+
+            double? total = 0;
+
             List<cart> cartItems;
             using (var db = new DelishCFdbEF())
             {
+                total = db.carts.Sum(p => p.purchase_price * p.quantity);
                 cartItems = db.carts.OrderBy(x => x.id).ToList();
+                var dishDetail_query = db.dishes.ToList();
+
+                foreach (var dish in dishDetail_query)
+                {
+                    if (cartItems.Exists(x => x.product_id == dish.id))
+                    {
+                        dishDetails.Add(dish);
+                    }
+
+                }
 
 
             }
+
+            ViewBag.Dishdetails = dishDetails;
+            ViewBag.Total = total;
 
             return View(cartItems);
         }
@@ -44,6 +62,7 @@ namespace DelishWebsite.Controllers
 
 
 
+
             using (var db = new DelishCFdbEF())
             {
 
@@ -51,8 +70,12 @@ namespace DelishWebsite.Controllers
                                  orderby d.id
                                  select d;
 
+
                 purchase_price = db.dishes.Find(dishid).price;
 
+
+
+                //populate the usercart
                 foreach (var item in cart_query)
                 {
                     userCart.Add(new cart
@@ -66,7 +89,7 @@ namespace DelishWebsite.Controllers
 
                 }
 
-
+                //check usercart for dish
                 foreach (var item in userCart)
                 {
                     if (item.product_id == dishid)
@@ -77,6 +100,8 @@ namespace DelishWebsite.Controllers
                     }
                 }
 
+                //increment count if in cart already
+
                 if (isInCart)
                 {
                     db.carts.Find(cartid).quantity++;
@@ -84,6 +109,7 @@ namespace DelishWebsite.Controllers
                 }
                 else
                 {
+
                     db.carts.Add(new cart
                     {
                         product_id = dishid,

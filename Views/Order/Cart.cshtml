@@ -5,14 +5,8 @@
 @model IEnumerable<DelishDB.cart>
 
 
-@foreach (var item in Model)
-{
-    <h1>@item.id</h1>
-    <h1>@item.product_id</h1>
-    <h1>@item.purchase_price</h1>
-    <h1>@item.quantity</h1>
-    <h1>@item.total</h1>
-
+@{
+    int count = 0;
 }
 
 <!-- banner -->
@@ -55,7 +49,8 @@
                     <tr class="cake-top">
                         <td style="text-align: left; vertical-align: middle;" class="cakes">
                             <div class="product-img">
-                                <img width="100" src=@Url.Content("~/Content/images/1.jpg")>
+                                <img width="100" src=@Url.Content($"~/Content/images/{@ViewBag.Dishdetails[count].img}")>  
+                                
                             </div>
                         </td>
                         <td style="text-align: left; vertical-align: middle;" class="cake-text">
@@ -82,7 +77,7 @@
                         </td>
 
                     </tr>
-
+                    count += 1;
                 }
             </tbody>
         </table>
@@ -97,7 +92,7 @@
                 </form>
             </div>
             <div class="dis-total">
-                <h2>Total $38.97</h2>
+                <h2>Total: @String.Format("{0:C}", @ViewBag.Total)</h2>
                 <div class="tot-btn">
                     <a class="shop" href=@Url.Action("Menu", "Home")>Back to Shop</a>
                     <a class="btn btn-success text-uppercase btn-lg text-wh" href="#">Checkout</a>
