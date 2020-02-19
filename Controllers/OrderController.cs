@@ -13,6 +13,9 @@ namespace DelishWebsite.Controllers
 
         public ActionResult Cart()
         {
+
+            //
+
             return View();
         }
 
@@ -99,24 +102,33 @@ namespace DelishWebsite.Controllers
 
 
 
-        public ActionResult UpdateCart(int CartId)
+        public ActionResult UpdateCart(int CartId, int quantity)
         {
 
+            using (var db = new DelishCFdbEF())
+            {
+                db.carts.Find(CartId).quantity = quantity;
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Cart");
         }
 
-        public void RemoveFromCart(int dishid)
+        public void RemoveFromCart(int Cartid, int quantity)
         {
 
-
+            using (var db = new DelishCFdbEF())
+            {
+                db.carts.Find(Cartid).quantity = 0;
+                db.SaveChanges();
+            }
 
         }
 
         public ActionResult Checkout(int cartid)
         {
 
-
+            //payment
             return View();
         }
     }
