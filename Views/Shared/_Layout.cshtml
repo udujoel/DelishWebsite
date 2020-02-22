@@ -16,8 +16,20 @@
 		  rel="stylesheet" />
 	<!-- //Web-Fonts -->
 	<!-- //for-mobile-apps -->
-	@Styles.Render("~/Content/css")
-	@Scripts.Render("~/bundles/modernizr")
+
+	<link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+	<link href="~/Content/css/cartstyle.css" rel="stylesheet" />
+	<link href="~/Content/css/css_slider.css" rel="stylesheet" />
+	<link href="~/Content/css/datatables.css" rel="stylesheet" />
+	<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/Content/css/single.css" rel="stylesheet" />
+	<link href="~/Content/css/style.css" rel="stylesheet" />
+
+
+
+
+	@* @Styles.Render("~/Content/css") *@
+	@* @Scripts.Render("~/bundles/modernizr") *@
 
 </head>
 <body>
@@ -261,22 +273,37 @@
 	<!-- //footer -->
 
 	@section Scripts {
-		@Scripts.Render("~/bundles/jqueryval")
+
+		<script src="~/Scripts/jquery-3.4.1.js"></script>
+		<script src="~/Scripts/jquery-3.4.1.intellisense.js"></script>
+		<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+		<script src="~/Scripts/jquery.validate.js"></script>
+		<script src="~/Scripts/jquery.validate.min.js"></script>  
+		<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+		<script src="~/Scripts/modernizr-2.8.3.js"></script>
+		<script src="~/Scripts/popper-utils.js"></script>
+		<script src="~/Scripts/popper.js"></script>
+		<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+		<script src="~/Content/js/datatables.js"></script>
+		<script src="~/Scripts/bootstrap.js"></script>
+
+		@* @Scripts.Render("~/bundles/jqueryval") *@
 
 		<script>
-			$(document).ready(function() {
-				$('#cart').DataTable({
-				});
-			});
+			$( document ).ready( function ()
+			{
+				$( '#cart' ).DataTable( {
+				} );
+			} );
 
 		</script>
-}
+	}
 
-<!-- move top icon -->
-<a href="#home" class="move-top text-center">
-	<span class="fa fa-level-up" aria-hidden="true"></span>
-</a>
-<!-- //move top icon -->
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center">
+		<span class="fa fa-level-up" aria-hidden="true"></span>
+	</a>
+	<!-- //move top icon -->
 
 </body>
 </html>

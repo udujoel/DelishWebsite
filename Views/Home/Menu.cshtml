@@ -23,6 +23,8 @@
     </ol>
 </div>
 <!-- //page details -->
+
+
 <!-- menu -->
 <section class="portfolio py-5">
     <div class="container py-xl-5 py-lg-3">
@@ -61,8 +63,8 @@
 @foreach (var dish in ViewBag.Menu)
 {
     <!-- gallery model-->
-    <!-- gallery popup 1 -->    
-    <div id="@dish.id" class="pop-overlay">    
+    <!-- gallery popup 1 -->
+    <div id="@dish.id" class="pop-overlay">
         <div class="popup">
             <img class="img-fluid" src=@Url.Content($"~/Content/images/{@dish.img}") alt="">
             <h4 class="p-mask">@dish.name &nbsp;&nbsp;&nbsp;<span>@String.Format("{0:C}", @dish.price)</span></h4>
