@@ -26,40 +26,6 @@ namespace DelishWebsite.Controllers
                 if (response.status)
                 {
 
-//                    try
-//                    {
-//                        using (var db = new DelishDB())
-//                        {
-//
-//                            int currentCount = 0;
-//                            currentCount = (int) Session["count"];
-//
-//                            db.loandetails.Find((int) Session["selectedItemId"]).count = currentCount + 1;
-//                            db.loandetails.Find((int) Session["selectedItemId"]).date  = DateTime.Now;
-//                            //  Update subscription table
-//
-//                            var user = new subscription
-//                            {
-//                                userid    = User.Identity.GetUserName().ToLower(),
-//                                startdate = DateTime.Now,
-//                                enddate   = DateTime.Now.AddMonths(1)
-//                            };
-//
-//
-//                            db.subscriptions.Add(user);
-//
-//
-//
-//                            db.SaveChanges();
-//
-//
-//                        }
-//                    }
-//                    catch (Exception e)
-//                    {
-//
-//                        return View("Error");
-//                    }
 
                     return View(response);
                 }
