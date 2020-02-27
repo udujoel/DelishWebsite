@@ -65,7 +65,14 @@ namespace DelishWebsite.Controllers
                 }
             }
 
-            return View("PaymentError");
+            return View("paymenterror");
+        }
+
+        public ActionResult Callback()
+        {
+
+
+            return View("success");
         }
     }
 }
