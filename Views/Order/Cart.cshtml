@@ -49,8 +49,8 @@
                     <tr class="cake-top">
                         <td style="text-align: left; vertical-align: middle;" class="cakes">
                             <div class="product-img">
-                                <img width="100" src=@Url.Content($"~/Content/images/{@ViewBag.Dishdetails[count].img}")>  
-                                
+                                <img width="100" src=@Url.Content($"~/Content/images/{@ViewBag.Dishdetails[count].img}")>
+
                             </div>
                         </td>
                         <td style="text-align: left; vertical-align: middle;" class="cake-text">
@@ -109,3 +109,58 @@
 <br />
 <br />
 
+
+
+//paystack payment
+
+@section Scripts{
+
+    <script>
+
+        $(function() {
+
+
+            function InitTransaction(data) {
+                return $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("InitializePayment", "Subscription", new {area = ""})",
+                    data: data,
+                    dataType: 'json',
+                    contentType: 'application/json;charset=utf-8'
+                });
+            }
+
+            $("#payNowButton").click(function(e) {
+                $(".redirect-message").show();
+                e.preventDefault();
+                var amnt = parseInt((parseInt($(this).attr("href")) * 100));
+
+                var data = JSON.stringify({
+//                    firstName: $("#firstName").val(),
+//                    lastName: $("#lastName").val(),
+                    email: $("#email").val(),
+//                    phone: $("#phone").val(),
+                    amount: amnt
+                });
+
+
+                $.when(InitTransaction(data)).then(function(response) {
+
+
+                    if (response.error == false) {
+
+                        window.location.href = response.result.data.authorization_url;
+                    } else {
+                        $(".redirect-message").hide();
+                    }
+
+                }).fail(function() {
+                    $(".redirect-message").hide()
+                });
+
+            });
+
+        });
+
+    </script>
+}

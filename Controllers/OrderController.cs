@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace DelishWebsite.Controllers
@@ -190,6 +192,23 @@ namespace DelishWebsite.Controllers
 
             //payment
             return View();
+        }
+
+        public async Task<JsonResult> InitializePayment(PaystackCustomerModel model)
+        {
+            string secretKey              = ConfigurationManager.AppSettings["PaystackSecret"];
+            var    paystackTransactionAPI = new PaystackTransaction(secretKey);
+            var response = await paystackTransactionAPI.InitializeTransaction(model.email, model.amount,
+                                                                              model.firstName, model.lastName,
+                                                                              "https://localhost:44348/callback");
+            //Note that callback url is optional
+            if (response.status == true)
+            {
+                return Json(new {error = false, result = response}, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new {error = true, result = response}, JsonRequestBehavior.AllowGet);
+
         }
     }
 }

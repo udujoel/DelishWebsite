@@ -2,15 +2,17 @@
 @if (Request.IsAuthenticated)
 {
 
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "btn login-button-2 text-uppercase text-wh" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "btn login-button-2 text-uppercase text-wh"}))
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
+    <ul class="nav navbar-nav navbar-right ">
+        <li >
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="btn login-button-2 text-uppercase text-wh" })
       
-            <a href="javascript:document.getElementById('logoutForm').submit()"><button class="btn btn-danger text-uppercase text-wh">Log off</button></a></li>
+        
+            <input type="submit"  class="btn btn-danger text-uppercase text-wh"  value="Log Off">
+        </li>
     </ul>
     }
 }
