@@ -427,6 +427,7 @@
     <Content Include="Views\Order\Cart.cshtml" />
     <Content Include="Views\Blog\Post.cshtml" />
     <Content Include="Views\Callback\success.cshtml" />
+    <Content Include="Views\Callback\paymenterror.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
