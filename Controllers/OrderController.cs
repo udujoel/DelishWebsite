@@ -200,7 +200,7 @@ namespace DelishWebsite.Controllers
             var    paystackTransactionAPI = new PaystackTransaction(secretKey);
             var response = await paystackTransactionAPI.InitializeTransaction(model.email, model.amount,
                                                                               model.firstName, model.lastName,
-                                                                              "https://localhost:44348/callback");
+                                                                              "https://localhost:44348/order/callback");
             //Note that callback url is optional
             if (response.status == true)
             {
@@ -210,5 +210,7 @@ namespace DelishWebsite.Controllers
             return Json(new {error = true, result = response}, JsonRequestBehavior.AllowGet);
 
         }
+
+
     }
 }
