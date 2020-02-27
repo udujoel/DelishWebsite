@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Paystack.Net.SDK.Transactions;
 
 namespace DelishWebsite.Controllers
 {
